@@ -1,13 +1,12 @@
 import os
 os.system('clear')
-import numpy as np
 class Solution(object):
-    def longestOnes(self, nums, k):
+    def longestSubarray(self, nums):
         """
         :type nums: List[int]
-        :type k: int
         :rtype: int
         """
+        k = 1
         left = 0
         right = 0
         currentSeq = []
@@ -33,12 +32,8 @@ class Solution(object):
                     numZero -= 1
                 del currentSeq[0]
                 lenCurrentSeq -= 1              
-        return result
-nums = [1,1,1,0,0,0,1,1,1,1,0]
-nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1]
-# nums = [0,0,1,1,1,0,0]
-# nums = [1,1,1,0,0,0,1,1,1,1]
-k = 3
+        return result-k
+nums = [1,1,0,1]
 result = Solution()
-t = result.longestOnes(nums, k)
+t = result.longestSubarray(nums)
 print(t)
