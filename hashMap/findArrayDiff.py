@@ -17,7 +17,7 @@ class Solution(object):
             num = uniqNum1[left]
             if num in uniqNum2:
                 del uniqNum1[left]
-                del uniqNum2[left]
+                uniqNum2.remove(num)
                 right -= 1
             else:
                 left += 1
