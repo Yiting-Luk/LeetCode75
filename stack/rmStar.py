@@ -11,7 +11,7 @@ class Solution(object):
             if char != "*":
                 stack.append(char)
             else:
-                if stack[-1] and char == "*":
+                if stack[-1] and char == "*": # -1 returns the last element
                     stack.pop()
         return "".join(stack)
     
