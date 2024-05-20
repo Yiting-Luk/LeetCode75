@@ -16,26 +16,29 @@ class LinkedList:
                 last = last.next
             last.next = new_node  # Make the new node the next node of the last node        
 class Solution(object):
-    def reverseList(self, head):
+    def pairSum(self, head):
         """
-        :type head: ListNode
-        :rtype: ListNode
+        :type head: Optional[ListNode]
+        :rtype: int
         """
-        if head == None or head.next == None:
-            return head
-        else:
-            prev = None
-            curr = head
-            while curr:
-                next = curr.next
-                curr.next = prev
-                prev = curr
-                curr = next
-            return prev
+        data = []
+        while head != None:
+            data.append(head.val)
+            head = head.next
+        left = 0
+        right = len(data)-1
+        pairSum = []
+        while left < right:
+            pairSum.append(data[left]+data[right])
+            left += 1
+            right -= 1
+        return max(pairSum)
 
-head = [1,2,3,4,5]
-llsit = LinkedList()
+head = [5,4,2,1]
+llist = LinkedList()
 for val in head:
-    llsit.insertAtEnd(val)
+    llist.insertAtEnd(val)
+
 obj = Solution()
-result = obj.reverseList(llsit.head)
+result = obj.pairSum(llist.head)
+print(result)
