@@ -28,32 +28,35 @@ class BinaryTree:
                 if curr_node.right.val != None:
                     queue.append(curr_node.right)
 class Solution(object):
-    def goodNodes(self, root):
+    def pathSum(self, root, targetSum):
         """
         :type root: TreeNode
+        :type targetSum: int
         :rtype: int
         """
-        if not root:
-            return 0
-        def dfs(root, curr_max):
+        def dfs(root, flag, residual):
             if not root:
                 return
             if root.val == None:
-                root.val = float('-inf')
-            if root.val >= curr_max:
+                return
+            residual -= root.val
+            if residual == 0:
                 self.count += 1
-                curr_max = root.val
-            dfs(root.left, curr_max)
-            dfs(root.right, curr_max)
+            dfs(root.left, False, residual)
+            dfs(root.right, False, residual)
+            if flag:
+                dfs(root.left, True, self.targetSum)
+                dfs(root.right, True, self.targetSum)
+        self.targetSum = targetSum
         self.count = 0
-        # Here's an English explanation, basically with functions "def" you can't share variables with other functions. 
-        # So if you put them a class and put self in front of variable in a function, other functions in that class can call that variable and manipulate it.       
-        dfs(root, float('-inf'))
+        dfs(root, True, self.targetSum)
         return self.count
-root = [3,1,4,3,None,1,5]
+
+root = [10,5,-3,3,2,None,11,3,-2,None,1]
+targetSum = 8
 tree = BinaryTree(root[0])
 for i in range(1, len(root)):
     tree.insert(root[i])
 obj = Solution()
-result = obj.goodNodes(tree.root)
+result = obj.pathSum(tree.root,targetSum)
 print(result)
