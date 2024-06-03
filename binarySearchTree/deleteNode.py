@@ -59,7 +59,7 @@ class Solution(object):
             else:
                 root.val = self.predecessor(root)
                 # Found the key of maximum from the left subtree
-                root.left = self.deleteNode(root.left, root.left.val)
+                root.left = self.deleteNode(root.left, root.val)
                 # replace the delete node with the maximum from the left subtree           
         return root
     def successor(self, root):
