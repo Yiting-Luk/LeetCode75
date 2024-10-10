@@ -27,8 +27,7 @@ class Solution(object):
                         else:
                             temp = provinces[p]
                             provinces.pop(p)
-                            provinces[q] += temp
-                            
+                            provinces[q] += temp                           
         return len(provinces)
 isConnected = [[1,1,0],[1,1,0],[0,0,1]]
 isConnected = [[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]
