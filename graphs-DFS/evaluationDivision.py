@@ -11,7 +11,7 @@ def calcEquation(equations, values, queries):
         graph[A][B] = value 
         # A is a node in the graph. B is a neighbor of A. graph[A][B] stores the weight of the edge from node A to node B.
         graph[B][A] = 1.0 / value  
-             
+
     # Step 2: Function to perform DFS and find the result for a query
     def dfs(start, end, visited):
         if start not in graph or end not in graph:
@@ -21,7 +21,7 @@ def calcEquation(equations, values, queries):
         visited.add(start)
         for neighbor, val in graph[start].items():
             if neighbor in visited:
-                continue
+                continue # skip the rest of the current iteration of for or while loops.
             result = dfs(neighbor, end, visited)
             if result != -1.0:
                 return result * val
@@ -31,7 +31,7 @@ def calcEquation(equations, values, queries):
     results = []
     for C, D in queries:
         if C in graph and D in graph:
-            results.append(dfs(C, D, set()))
+            results.append(dfs(C, D, set())) # set() is en empty set passed to the dfs.
         else:
             results.append(-1.0)
     
