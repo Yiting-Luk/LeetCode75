@@ -21,6 +21,6 @@ def guessNumber(n: int) -> int: # -> int 函数返回类型提示
             low = mid + 1  # The picked number is higher than mid.
 
 n = 10
-pick = 6
+pick = 6 # 全局变量
 result = guessNumber(n)
 print(result)
